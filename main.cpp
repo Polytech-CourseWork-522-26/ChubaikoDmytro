@@ -18,17 +18,22 @@ int main() {
         cout << "2. Register New User" << endl;
         cout << "3. Login" << endl;
 
-        if (currentUser.role == 1) {
-            cout << "4. [Admin] Add Product" << endl;
+        if (currentUser.id != -1) {
+            if (currentUser.role == 1) {
+                cout << "4. [Admin] Add Product" << endl;
+                cout << "5. [Admin] View All Orders" << endl;
+                cout << "6. [Admin] View All Users" << endl;
+            } else {
+                cout << "4. My Cart & Checkout" << endl;
+                cout << "5. My Order History" << endl;
+            }
         }
 
         cout << "0. Exit" << endl;
         cout << "Choice: ";
         
         if (!(cin >> choice)) {
-            cin.clear();
-            cin.ignore(1000, '\n');
-            continue;
+            cin.clear(); cin.ignore(1000, '\n'); continue;
         }
 
         if (choice == 0) break;
@@ -39,7 +44,14 @@ int main() {
             case 3: loginFlow(); break;
             case 4: 
                 if (currentUser.role == 1) addProductFlow();
-                else cout << "[Access Denied]" << endl;
+                else if (currentUser.id != -1) viewCartFlow(); // Кошик та оформлення
+                break;
+            case 5: 
+                if (currentUser.role == 1) manageOrdersFlow(); // Адмін: одобрення/відхилення
+                else if (currentUser.id != -1) viewMyOrdersFlow(); // Юзер: його історія
+                break;
+            case 6: 
+                if (currentUser.role == 1) viewAllUsersFlow(); 
                 break;
             default: cout << "Invalid choice." << endl;
         }

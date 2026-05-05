@@ -6,11 +6,15 @@ bool saveProduct(Product product);
 
 int getAllProducts(Product outArray[], int maxCount);
 
-// Пошук за ID
 Product findProductById(int id);
 
-// Оновлення
 bool updateProduct(Product product);
 
-// Видалення
 bool deleteProduct(int id);
+
+bool updateProductStatus(int productId, int newStatus);
+
+int getAllProductsFull(Product outArray[], int maxCount);
+
+int filterProducts(Product input[], int inCount, Product output[], 
+                   const char* name, double minP, double maxP, bool ascending);

@@ -1,12 +1,16 @@
 #pragma once
 #include "Users/User.h"
 
-// Функції для роботи з інтерфейсом
 void initializeSystem();
 void showCatalogFlow();
 void registerUserFlow();
 void loginFlow();
 void addProductFlow();
 
-// Глобальна змінна для поточної сесії
+// Сценарії замовлень
+void viewCartFlow();               // Кошик: перегляд, видалення, оформлення
+void viewMyOrdersFlow();           // [User] Історія моїх замовлень
+void manageOrdersFlow();           // [Admin] Керування статусами замовлень
+void viewAllUsersFlow();           // [Admin] Список користувачів
+
 extern User currentUser;

@@ -37,16 +37,25 @@ Order findOrderById(int id) {
 }
 
 bool updateOrder(Order order) {
+    // Відкриваємо файл у режимі читання та запису (binary | in | out)
     fstream file(ORDER_FILE, ios::binary | ios::in | ios::out);
     if (!file) return false;
+
     Order temp;
+    bool found = false;
+    
+    // Шукаємо замовлення за ID
     while (file.read((char*)&temp, sizeof(Order))) {
         if (temp.id == order.id) {
+            // Переміщуємо покажчик запису на початок знайденої структури
             file.seekp((int)file.tellg() - sizeof(Order));
+            // Переписуємо дані новими значеннями
             file.write((char*)&order, sizeof(Order));
-            file.close();
-            return true;
+            found = true;
+            break; // Виходимо з циклу після успішного оновлення
         }
     }
-    return false;
+
+    file.close(); // Закриваємо файл тільки після закінчення всіх дій
+    return found;
 }

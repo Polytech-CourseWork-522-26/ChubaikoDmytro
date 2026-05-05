@@ -6,3 +6,4 @@ int getAllUsers(User outArray[], int maxCount);
 User findUserById(int id);
 bool updateUser(User user);
 bool deleteUser(int id);
+bool isUsernameTaken(const char* username);

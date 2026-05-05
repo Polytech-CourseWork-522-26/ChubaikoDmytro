@@ -2,6 +2,7 @@
 #include "UserRepository.h"
 #include <fstream>
 #include <cstdio>
+#include <cstring>
 
 
 using namespace std;
@@ -66,4 +67,17 @@ bool deleteUser(int id) {
     file.close(); tempFile.close();
     remove(USER_FILE); rename("temp_u.dat", USER_FILE);
     return found;
+}
+bool isUsernameTaken(const char* username) {
+    ifstream file(USER_FILE, ios::binary);
+    if (!file) return false;
+    User temp;
+    while (file.read((char*)&temp, sizeof(User))) {
+        if (strcmp(temp.name, username) == 0) {
+            file.close();
+            return true;
+        }
+    }
+    file.close();
+    return false;
 }
