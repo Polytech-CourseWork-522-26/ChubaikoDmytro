@@ -1,0 +1,6 @@
+*.exe
+*.dat
+*.o
+.vscode/
+images/products/
+models/products/
