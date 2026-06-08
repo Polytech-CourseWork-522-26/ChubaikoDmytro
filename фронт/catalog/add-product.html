@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet" />
+    <link href="add-product.css" rel="stylesheet" />
+    <link href="../overlays/overlay-style.css" rel="stylesheet" />
+    <title>CE — Додати товар</title>
+</head>
+<body>
+<div class="Main">
+
+    <!-- HEADER -->
+    <header class="Header">
+        <a class="Text1" href="../main/index.html">CE</a>
+        <nav class="HeaderMenu">
+            <a class="HomeButton" href="../main/index.html">Дім</a>
+            <a class="CatalogButton active" href="catalog.html">Каталог</a>
+            <a class="OrdersButton" href="../order/order.html">Замовлення</a>
+        </nav>
+        <div class="Icons">
+            <div class="bg1" id="profileBtn"><a class="ProfileButton"></a></div>
+            <div class="bg2" id="cartBtn"><a class="CartButton"></a></div>
+        </div>
+    </header>
+
+    <!-- BREADCRUMB -->
+    <nav class="Map">
+        <span class="MapElement1">Дім</span>
+        <span class="MapElement2">Каталог</span>
+        <span class="MapElement3">Додати товар</span>
+    </nav>
+
+    <!-- PAGE TITLE -->
+    <div class="PageTitleBlock">
+        <h1 class="PageTitle">Додати товар</h1>
+        <p class="PageSubtitle">Заповніть усі поля — після збереження товар з'явиться в каталозі</p>
+    </div>
+
+    <!-- FORM
+         action і method підставляє Java-бекенд.
+         Атрибути name="" відповідають полям структури Product у C++.
+         enctype потрібен для завантаження фото.
+    -->
+    <form
+        class="ProductForm"
+        action="/api/products/add"
+        method="POST"
+        enctype="multipart/form-data"
+        id="addProductForm"
+    >
+        <div class="FormLayout">
+
+            <!-- ЛІВА КОЛОНКА — фото -->
+            <div class="FormLeft">
+
+                <div class="PhotoUploadBlock" id="photoBlock">
+                    <input
+                        type="file"
+                        name="photo"
+                        id="photoInput"
+                        accept="image/*"
+                        class="PhotoInput"
+                    />
+                    <label class="PhotoLabel" for="photoInput">
+                        <div class="PhotoIcon">+</div>
+                        <span class="PhotoText">Завантажити фото</span>
+                        <span class="PhotoHint">JPG, PNG · до 5 МБ</span>
+                    </label>
+                    <!-- Прев'ю після вибору файлу -->
+                    <img class="PhotoPreview" id="photoPreview" src="" alt="Прев'ю" />
+                </div>
+
+                <!-- 3D Модель → model3dPath у структурі Product (C++) -->
+                <div class="FieldGroup">
+                    <label class="FieldLabel">3D Модель товару</label>
+                    <div class="ModelUploadBlock" id="modelBlock">
+                        <input
+                            type="file"
+                            name="model"
+                            id="modelInput"
+                            accept=".glb,.gltf,.obj,.fbx"
+                            class="PhotoInput"
+                        />
+                        <label class="PhotoLabel ModelLabel" for="modelInput">
+                            <div class="ModelIcon">⬡</div>
+                            <span class="PhotoText">Завантажити 3D модель</span>
+                            <span class="PhotoHint">GLB, GLTF, OBJ, FBX · до 100 МБ</span>
+                        </label>
+                        <!-- Назва файлу після вибору -->
+                        <div class="ModelFileName" id="modelFileName" style="display:none;">
+                            <span class="ModelFileIcon">✓</span>
+                            <span id="modelFileNameText"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Статус товару → product.status: 1 = в наявності, 0 = немає -->
+                <div class="StatusBlock">
+                    <span class="StatusLabel">Статус товару</span>
+                    <div class="StatusOptions">
+                        <label class="StatusOption">
+                            <input type="radio" name="status" value="1" checked />
+                            <span class="StatusText">В наявності</span>
+                        </label>
+                        <label class="StatusOption">
+                            <input type="radio" name="status" value="0" />
+                            <span class="StatusText">Немає в наявності</span>
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- ПРАВА КОЛОНКА — текстові поля -->
+            <div class="FormRight">
+
+                <!-- modelName -->
+                <div class="FieldGroup">
+                    <label class="FieldLabel" for="field-name">Назва товару</label>
+                    <input
+                        class="FieldInput"
+                        type="text"
+                        id="field-name"
+                        name="modelName"
+                        placeholder="Наприклад: Amber Light"
+                        maxlength="128"
+                        required
+                    />
+                </div>
+
+                <!-- price -->
+                <div class="FieldGroup">
+                    <label class="FieldLabel" for="field-price">Ціна ($)</label>
+                    <input
+                        class="FieldInput FieldInputShort"
+                        type="number"
+                        id="field-price"
+                        name="price"
+                        placeholder="0.00"
+                        min="0"
+                        step="0.01"
+                        required
+                    />
+                </div>
+
+                <!-- description -->
+                <div class="FieldGroup">
+                    <label class="FieldLabel" for="field-desc">Опис</label>
+                    <textarea
+                        class="FieldTextarea"
+                        id="field-desc"
+                        name="description"
+                        placeholder="Короткий опис товару..."
+                        rows="3"
+                    ></textarea>
+                </div>
+
+                <!-- technology -->
+                <div class="FieldGroup">
+                    <label class="FieldLabel" for="field-tech">Технологія</label>
+                    <input
+                        class="FieldInput"
+                        type="text"
+                        id="field-tech"
+                        name="technology"
+                        placeholder="Наприклад: Точний механічний механізм"
+                        maxlength="256"
+                    />
+                </div>
+
+                <!-- care -->
+                <div class="FieldGroup">
+                    <label class="FieldLabel" for="field-care">Догляд</label>
+                    <textarea
+                        class="FieldTextarea"
+                        id="field-care"
+                        name="care"
+                        placeholder="Інструкція з догляду за товаром..."
+                        rows="2"
+                    ></textarea>
+                </div>
+
+                <!-- КНОПКИ -->
+                <div class="FormActions">
+                    <a class="BtnCancel" href="catalog.html">Скасувати</a>
+
+                    <button class="BtnSave fancy" type="submit">
+                        <span class="top-key"></span>
+                        <span class="text">Зберегти товар</span>
+                        <span class="bottom-key-1"></span>
+                        <span class="bottom-key-2"></span>
+                    </button>
+
+                    <!-- Кнопка видалення — показується тільки в режимі редагування через JS -->
+                    <button type="button" id="btnDeleteProduct" class="BtnDelete">
+                        Видалити товар
+                    </button>
+                </div>
+
+                <!-- Модальне вікно підтвердження видалення -->
+                <div id="deleteConfirmModal" class="DeleteModal">
+                    <div class="DeleteModalBox">
+                        <h3>Видалити товар?</h3>
+                        <p>Цю дію неможливо скасувати.<br>Товар буде видалено з каталогу назавжди.</p>
+                        <div class="DeleteModalActions">
+                            <button id="btnCancelDelete" class="BtnCancelDel">Скасувати</button>
+                            <button id="btnConfirmDelete" class="BtnConfirmDel">Так, видалити</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+        <!-- FOOTER -->
+    <footer class="Footer">
+        <div class="F_container">
+            <div class="F_socials">
+                <div class="F_holder">
+                    <div class="Support">
+                        <span class="Sup_text">Підтримка</span>
+                        <a class="Sup_link" href="mailto:support@cewatch.com">
+                            <span class="Ssup_text">Email</span>
+                            <div class="pointer-arrow"></div>
+                        </a>
+                    </div>
+                    <div class="Logo"></div>
+                </div>
+                <div class="F_Columns">
+                    <nav class="F_Column">
+                        <span class="F_link-community">Спільнота</span>
+                        <a href="#">Події</a>
+                        <a href="#">Блог</a>
+                        <a href="#">Підкаст</a>
+                        <a href="#">Запросити</a>
+                    </nav>
+                    <nav class="F_Column">
+                        <span class="F_link-socials">Соціальні мережі</span>
+                        <a href="#">Discord</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Twitter</a>
+                        <a href="#">Facebook</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</div>
+    <div id="accountModal" class="modal-overlay" style="display: none;">
+        <div id="modalContent"></div>
+    </div>
+
+    <script src="../overlays/modal-overlays.js"></script>
+    <script src="scripts/modal-catalog.js"></script>
+</body>
+</html>

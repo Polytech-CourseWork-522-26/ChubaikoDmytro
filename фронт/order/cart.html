@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CE Watch — Кошик</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/cart.css">
+</head>
+<body>
+
+<div class="modal-overlay cart-overlay" id="cartOverlay" onclick="handleBg(event)" style="display: none;">
+  <div class="cart-panel" id="cartPanel">
+
+    <div class="cart-header">
+      <h2><span>CE WATCH</span>Кошик</h2>
+      <button class="close-x" onclick="closeCart()">✕</button>
+    </div>
+
+    <div class="cart-body" id="filledBody" style="display: none;">
+      </div>
+
+    <div class="cart-empty-state" id="emptyBody">
+      <svg class="bag-icon" width="86" height="86" viewBox="0 0 86 86" fill="none">
+        <rect x="10" y="30" width="66" height="48" rx="10" stroke="#000" stroke-width="2.5"/>
+        <path d="M28 30C28 19 36 13 43 13C50 13 58 19 58 30" stroke="#000" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="43" cy="54" r="8" stroke="#000" stroke-width="2"/>
+      </svg>
+      <h3>Ваш кошик порожній</h3>
+      <p>Схоже, ви ще не додали<br>жодних товарів до кошика.</p>
+      <button class="btn-main" onclick="closeCart()">Продовжити покупки</button>
+      <button class="btn-outline" onclick="goToOrders()">Історія замовлень</button>
+    </div>
+
+    <div class="cart-success-state" id="successBody" style="display: none;">
+      <div class="check-ring">✓</div>
+      <h3>Замовлення прийнято!</h3>
+      <p>Підтвердження надіслано на<br>вашу електронну пошту.<br><br>Менеджер зв'яжеться з вами<br>найближчим часом.</p>
+      <button class="btn-main" onclick="goToOrders()">Мої замовлення</button>
+      <button class="btn-outline" onclick="closeCart()">Закрити</button>
+    </div>
+
+    <div class="cart-footer" id="cartFooter" style="display: none;">
+      <div class="cart-total">
+        <span>РАЗОМ</span>
+        <strong id="totalPrice">$0.00</strong>
+      </div>
+      <button class="btn-main" onclick="checkout()">Оформити замовлення</button>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

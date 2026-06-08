@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../overlays/overlay-style.css">
+  <title>CE — Вічна Майстерність</title>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header class="Header">
+  <a class="Text1" href="index.html">CE</a>
+  <nav class="HeaderMenu">
+    <a class="HomeButton active" href="#home">Дім</a>
+    <a class="AboutButton" href="#about">Про нас</a>
+    <a class="CatalogButton" href="../catalog/catalog.html">Каталог</a>
+    <a class="OrdersButton" href="../order/order.html">Замовлення</a>
+  </nav>
+  <div class="Icons">
+    <div class="bg1" id="profileBtn"><a class="ProfileButton"></a></div>
+    <div class="bg2" id="cartBtn"><a class="CartButton"></a></div>
+  </div>
+</header>
+
+
+<!-- ═══ HERO ═══ -->
+<section id="home" class="Hero">
+  <div class="HeroLeft">
+    <p class="HeroTagline">CHRONO EMPORIUM · EST. 1924</p>
+    <h1 class="HeroTitle">Вічна<br>Майстерність</h1>
+  </div>
+  <div class="HeroRight">
+    <img
+      class="HeroImage"
+      src="../images/Watch01.png"
+      alt="Колекція AUREL"
+      onerror="this.style.background='#f0f0f0';this.removeAttribute('src')"
+    >
+    <div class="HeroImageCaption">
+      <span class="HeroCollectionName">Колекція AUREL</span>
+      <span class="HeroYear">2025</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ TICKER ═══ -->
+<a
+  class="TickerStrip"
+  href="../product/product1.html?id=1"
+  style="text-decoration:none"
+>
+  <div class="TickerTrack" id="tickerTrack"></div>
+</a>
+
+
+<!-- ═══ COLLECTION FEATURE ═══ -->
+<section class="CollectionSection">
+  <div class="CollectionLeft">
+    <div class="CollectionMeta">
+      <span class="CollectionLabel">Колекція AUREL</span>
+      <span class="CollectionSub">Нова колекція</span>
+      <span class="CollectionPrice">$2 000</span>
+    </div>
+    <div class="CollectionDesc">
+      <p>
+        Вічна точність і видима майстерність — кожен годинник,
+        створений вручну, відображає досвідчене ремесло та витончену
+        механіку. Від кишенькових годинників, натхненних традиціями,
+        до сучасних хронографів — наша колекція поєднує класику й
+        інновації. Це не просто прилади для вимірювання часу — ці
+        годинники уособлюють статус, індивідуальність і елегантність.
+      </p>
+    </div>
+  </div>
+  <div class="CollectionRight">
+    <img class="CollectionImg" src="../images/Watch05.png" alt=""
+      onerror="this.style.background='rgba(255,255,255,0.08)';this.removeAttribute('src')">
+    <img class="CollectionImg" src="../images/Watch04.png" alt=""
+      onerror="this.style.background='rgba(255,255,255,0.08)';this.removeAttribute('src')">
+  </div>
+</section>
+
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about" class="AboutSection">
+  <p class="AboutSubtitle">100 років на ринку</p>
+  <h2 class="AboutHeading">ВІЧНИЙ СТИЛЬ<br>ЧОЛОВІКІВ</h2>
+  <p class="AboutTagline">Кожен виріб — це спадщина.</p>
+
+  <div class="AboutGrid">
+    <div class="AboutText">
+      <p>
+        Ласкаво просимо до Chrono Emporium — простору, де кожен годинник
+        розповідає історію майстерності, спадщини та точності. Ми віримо,
+        що справжній годинник — це не просто пристрій, а вираження характеру,
+        елегантності та вічної вишуканості. Саме тому ми створюємо годинники,
+        які не просто вимірюють час — вони визначають його.
+      </p>
+      <p>
+        Наша місія — створювати виняткові годинники, що поєднують механічне
+        мистецтво з розкішними деталями. Кожен виріб збирається досвідченими
+        годинникарями з найкращих матеріалів та за традиційними швейцарськими
+        методами — гарантуючи точність, довговічність і неперевершену красу.
+      </p>
+      <p>
+        Наша команда майстрів і дизайнерів вкладає пристрасть у кожен
+        компонент, формуючи вироби, що передають витонченість і особистий стиль.
+        Незалежно від того, віддаєте ви перевагу класичній душі вінтажних
+        механізмів чи виразній сучасності хронографів — наша колекція вшановує
+        як традиції, так і інновації.
+      </p>
+    </div>
+    <div class="AboutImageBlock">
+      <img
+        class="AboutImage"
+        src="../images/Watch03.png"
+        alt="CE Watch"
+        onerror="this.style.background='#f0f0f0';this.removeAttribute('src')"
+      >
+      <div class="AboutLogoOverlay"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ CATALOG PREVIEW ═══ -->
+<section id="catalog" class="CatalogSection">
+  <div class="CatalogSectionHeader">
+    <span class="CatalogSectionTitle">Рекомендації тижня</span>
+    <a class="CatalogSectionLink" href="../catalog/catalog.html">
+      Каталог
+      <span class="CatalogArrow"></span>
+    </a>
+  </div>
+
+  <!--
+    id="catalogPreviewGrid" — сюди JS підтягне перші 6 товарів з бекенду.
+    Статичні картки — заготовки до підключення API.
+  -->
+  <div class="CatalogPreviewGrid" id="catalogPreviewGrid">
+
+    <!-- Скелетон-заглушки — JS замінить їх реальними товарами -->
+    <div class="CatalogPreviewCard CatalogPreviewSkeleton">
+      <div class="CatalogPreviewImg CatalogSkeletonImg"></div>
+      <div class="CatalogPreviewInfo">
+        <div class="CatalogSkeletonLine" style="width:65%"></div>
+        <div class="CatalogSkeletonLine" style="width:38%;margin-top:6px"></div>
+      </div>
+    </div>
+    <div class="CatalogPreviewCard CatalogPreviewSkeleton">
+      <div class="CatalogPreviewImg CatalogSkeletonImg"></div>
+      <div class="CatalogPreviewInfo">
+        <div class="CatalogSkeletonLine" style="width:55%"></div>
+        <div class="CatalogSkeletonLine" style="width:32%;margin-top:6px"></div>
+      </div>
+    </div>
+    <div class="CatalogPreviewCard CatalogPreviewSkeleton">
+      <div class="CatalogPreviewImg CatalogSkeletonImg"></div>
+      <div class="CatalogPreviewInfo">
+        <div class="CatalogSkeletonLine" style="width:72%"></div>
+        <div class="CatalogSkeletonLine" style="width:40%;margin-top:6px"></div>
+      </div>
+    </div>
+    <div class="CatalogPreviewCard CatalogPreviewSkeleton">
+      <div class="CatalogPreviewImg CatalogSkeletonImg"></div>
+      <div class="CatalogPreviewInfo">
+        <div class="CatalogSkeletonLine" style="width:60%"></div>
+        <div class="CatalogSkeletonLine" style="width:36%;margin-top:6px"></div>
+      </div>
+    </div>
+    <div class="CatalogPreviewCard CatalogPreviewSkeleton">
+      <div class="CatalogPreviewImg CatalogSkeletonImg"></div>
+      <div class="CatalogPreviewInfo">
+        <div class="CatalogSkeletonLine" style="width:50%"></div>
+        <div class="CatalogSkeletonLine" style="width:42%;margin-top:6px"></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══ FOOTER ═══ -->
+<footer id="contacts" class="Footer">
+  <div class="FooterInner">
+
+    <div class="FooterLeft">
+      <div class="FooterSupport">
+        <span class="FooterSupportTitle">Підтримка</span>
+        <a class="FooterEmailLink" href="mailto:support@cewatch.com">
+          Email
+          <span class="FooterEmailArrow"></span>
+        </a>
+      </div>
+      <div class="FooterLogo"></div>
+    </div>
+
+    <div class="FooterColumns">
+      <nav class="FooterColumn">
+        <span class="FooterColumnTitle">Про нас</span>
+        <a href="#about">Наша історія</a>
+        <a href="../catalog/catalog.html">Каталог</a>
+      </nav>
+      <nav class="FooterColumn">
+        <span class="FooterColumnTitle">Спільнота</span>
+        <a href="#">Події</a>
+        <a href="#">Блог</a>
+        <a href="#">Підкасти</a>
+        <a href="#">Запросити друзів</a>
+      </nav>
+      <nav class="FooterColumn">
+        <span class="FooterColumnTitle">Соціальні мережі</span>
+        <a href="#">Discord</a>
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+        <a href="#">Facebook</a>
+      </nav>
+    </div>
+
+  </div>
+</footer>
+
+
+<!-- ACCOUNT MODAL -->
+<div id="accountModal" class="modal-overlay" style="display:none">
+  <div id="modalContent"></div>
+</div>
+
+<!-- CART OVERLAY -->
+<div class="modal-overlay cart-overlay" id="cartOverlay">
+  <div class="card cart-panel" id="cartPanel"></div>
+</div>
+
+
+
+
+<script src="../overlays/modal-overlays.js"></script>
+<script src="scripts/modal-main.js"></script>
+
+</body>
+</html>

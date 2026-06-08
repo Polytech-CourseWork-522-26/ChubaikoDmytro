@@ -1,0 +1,100 @@
+/* ═══════════════════════════════════════════════════
+   overlay-style.css
+   Базові стилі модальних оверлеїв (профіль, вхід,
+   реєстрація). Кошик — у cart-overlay.css
+   ═══════════════════════════════════════════════════ */
+
+/* Це змусить модалку з'явитися, коли JS змінить display на flex */
+.modal-overlay {
+    display: none; /* Спочатку приховано */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8) !important;
+    z-index: 99999 !important; /* Дуже високий пріоритет */
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+/* Дизайн золотистої картки */
+.card, .account-card {
+    background-color: #E6B551 !important;
+    width: 450px;
+    padding: 50px;
+    border-radius: 60px;
+    text-align: center;
+    color: white;
+    font-family: 'Roboto Mono', monospace;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+/* Поля вводу (лінії) */
+.input-group {
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+    color: white;
+    padding: 8px 0;
+    font-size: 18px;
+    outline: none;
+}
+
+/* Кнопки */
+.btn-main, .btn-outline {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    border-radius: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    margin-bottom: 15px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.btn-main {
+    background: #000 !important;
+    color: #fff !important;
+    border: none !important;
+}
+
+.btn-outline {
+    background: transparent !important;
+    color: #fff !important;
+    border: 3px solid #000 !important;
+}
+
+.btn-main:hover, .btn-outline:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.footer-link {
+    margin-top: 25px;
+    font-size: 14px;
+}
+
+.footer-link a {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}

@@ -1,0 +1,340 @@
+/* ═══════════════════════════════════════════════════
+   cart-overlay.css — ФІНАЛЬНА ВЕРСІЯ (ТЕМНА ТЕМА)
+   ═══════════════════════════════════════════════════ */
+
+/* ── 1. ГОЛОВНИЙ ОВЕРЛЕЙ (ФОН) ── */
+/* Займає весь екран, фіксується при скролі та притискає панель праворуч */
+.modal-overlay.cart-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background: rgba(0, 0, 0, 0.65) !important;
+    background-color: rgba(0, 0, 0, 0.65) !important;
+    z-index: 9999 !important;
+
+    display: none;
+    justify-content: flex-end !important;
+    align-items: stretch !important;
+}
+
+/* ── 2. БІЧНА ПАНЕЛЬ КОШИКА (SIDEBAR) ── */
+.cart-panel {
+    width: 430px !important;
+    max-width: 100vw !important;
+    height: 100vh !important;
+    background: #E6B551 !important;
+    background-color: #E6B551 !important;
+    border-left: 1px solid rgba(0, 0, 0, 0.15) !important;
+    border-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    text-align: left;
+    color: #1a1208 !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    box-sizing: border-box !important;
+    overflow: hidden;
+
+    animation: cartSlideIn 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes cartSlideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to   { transform: translateX(0);    opacity: 1; }
+}
+
+/* ── ІЗОЛЯЦІЯ ВІД ГЛОБАЛЬНИХ СТИЛІВ САЙТУ ── */
+.cart-panel *,
+.cart-panel *::before,
+.cart-panel *::after {
+    box-sizing: border-box;
+}
+
+/* Скидаємо фон який може прийти від глобальних .card, .modal і т.д. */
+.cart-panel .cart-header,
+.cart-panel #filledBody,
+.cart-panel .cart-empty-state,
+.cart-panel .cart-success-state,
+.cart-panel .cart-footer {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+/* ── 3. ШАПКА КОШИКА ── */
+.cart-header {
+    padding: 32px 36px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.cart-header h2 {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: #1a1208;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.cart-header h2 span {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    opacity: 0.5;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+/* Кнопка-хрестик закриття */
+.close-x {
+    background: transparent;
+    border: none;
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px;
+    transition: color 0.2s ease;
+}
+
+.close-x:hover {
+    color: #1a1208;
+}
+
+/* ── 4. СПИСОК ТОВАРІВ (КОЛИ КОШИК МАЄ ТОВАРИ) ── */
+#filledBody {
+    flex: 1;
+    overflow-y: auto; /* Дозволяє скролити список, якщо товарів багато */
+    padding: 24px 36px;
+    box-sizing: border-box;
+}
+
+/* Картка одного товару */
+.cart-panel .cart-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 16px;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 14px;
+    margin-bottom: 14px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Зображення товару */
+.cart-panel .cart-item-img {
+    width: 64px !important;
+    height: 64px !important;
+    min-width: 64px !important;
+    min-height: 64px !important;
+    max-width: 64px !important;
+    max-height: 64px !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    border-radius: 2px;
+    background: #222;
+    flex-shrink: 0;
+    display: block;
+    position: static !important;
+}
+
+/* Інформація по центру (назва + ціна) */
+.cart-item-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0; /* Дозволяє тексту коректно скорочуватись */
+}
+
+/* Текст назви (Захист від вилазилання за рамки) */
+.cart-item-info h4 {
+    margin: 0;
+    font-size: 15px;
+    color: #1a1208;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Три крапки, якщо назва занадто довга */
+}
+
+/* Ціна товару */
+.cart-item-price {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+/* Кнопка видалення товару */
+.cart-item-remove {
+    background: transparent;
+    border: 1px solid rgba(230, 80, 80, 0.3);
+    color: #e65050;
+    padding: 6px 12px;
+    font-family: inherit;
+    font-size: 11px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    flex-shrink: 0; /* Захист від стискання */
+}
+
+.cart-item-remove:hover {
+    background: #e65050;
+    color: #fff;
+    border-color: #e65050;
+}
+
+/* ── 5. ПІДВАЛ КОШИКА (РАЗОМ ДО ОПЛАТИ) ── */
+.cart-footer {
+    padding: 24px 36px 36px;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    background: rgba(0, 0, 0, 0.12);
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 24px;
+}
+
+.cart-total span {
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.cart-total strong {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1208;
+}
+
+/* Кнопки дій */
+.cart-footer .btn-main {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* ── 6. СТАН: ПОРОЖНІЙ КОШИК (ФІКС ЦЕНТРУВАННЯ ТА ІКОНКИ) ── */
+.cart-empty-state {
+    display: flex; /* Скрипт увімкне flex, коли кошик буде порожній */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 36px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.bag-icon {
+    margin-bottom: 24px;
+}
+
+/* Динамічне перефарбування ліній SVG у білий колір */
+.bag-icon rect, 
+.bag-icon path, 
+.bag-icon circle {
+    stroke: #1a1208 !important;
+    opacity: 0.85;
+}
+
+.cart-empty-state h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: #1a1208;
+    margin: 0 0 12px 0;
+}
+
+.cart-empty-state p {
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.55);
+    line-height: 1.6;
+    margin: 0 0 28px 0;
+}
+
+/* Кнопки всередині порожнього стану */
+.cart-empty-state .btn-main,
+.cart-empty-state .btn-outline {
+    width: 100%;
+    max-width: 260px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+}
+
+/* ── 7. СТАН: ЗАМОВЛЕННЯ ОФОРМЛЕНО (УСПІХ) ── */
+.cart-success-state {
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 36px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.check-ring {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 2px solid #5a9a5a;
+    color: #5a9a5a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+    background: rgba(90, 154, 90, 0.05);
+}
+
+.cart-success-state h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: #1a1208;
+    margin: 0 0 12px 0;
+}
+
+.cart-success-state p {
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.55);
+    line-height: 1.6;
+    margin: 0 0 28px 0;
+}
+
+/* Кнопки всередині стану успіху */
+.cart-success-state .btn-main,
+.cart-success-state .btn-outline {
+    width: 100%;
+    max-width: 260px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+}
+
+/* ── 8. КРАСИВИЙ СКРОЛЛБАР ДЛЯ СПИСКУ ── */
+#filledBody::-webkit-scrollbar {
+    width: 5px;
+}
+#filledBody::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+#filledBody::-webkit-scrollbar-track {
+    background: transparent;
+}

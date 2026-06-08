@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet" />
+    <link href="css/order.css" rel="stylesheet" />
+    <link href="../overlays/overlay-style.css" rel="stylesheet" />
+    <title>CE — Мої замовлення</title>
+</head>
+<body>
+<div class="Main">
+
+    <!-- HEADER -->
+    <header class="Header">
+        <a class="Text1" href="../main/index.html">CE</a>
+        <nav class="HeaderMenu">
+            <a class="HomeButton" href="../main/index.html">Дім</a>
+            <a class="CatalogButton" href="../catalog/catalog.html">Каталог</a>
+            <a class="OrdersButton active" href="order.html">Замовлення</a>
+        </nav>
+        <div class="Icons">
+            <div class="bg1"><button class="ProfileButton" id="profileBtn" aria-label="Профіль"></button></div>
+            <div class="bg2"><button class="CartButton"   id="cartBtn"    aria-label="Кошик"></button></div>
+        </div>
+    </header>
+
+    <!-- PAGE TITLE -->
+    <div class="OrdersTitle">
+        <h1 class="OrdersHeading">ЗАМОВЛЕННЯ</h1>
+        <p class="OrdersMeta">Завантаження...</p>
+    </div>
+
+    <!-- FILTER TABS -->
+    <div class="OrdersFilterBar">
+        <button class="OrdersTab active" onclick="filterOrders('all', this)">Всі</button>
+        <button class="OrdersTab" onclick="filterOrders('pending', this)">Очікують</button>
+        <button class="OrdersTab" onclick="filterOrders('approved', this)">Підтверджені</button>
+        <button class="OrdersTab" onclick="filterOrders('rejected', this)">Відхилені</button>
+        <span class="OrdersCount" id="ordersCount">3 замовлення</span>
+    </div>
+
+    <!-- ORDERS LIST -->
+    <div class="OrdersList" id="ordersList">
+        <p class="orders-empty">Завантаження...</p>
+    </div>
+
+        <!-- FOOTER -->
+    <footer class="Footer">
+        <div class="F_container">
+            <div class="F_socials">
+                <div class="F_holder">
+                    <div class="Support">
+                        <span class="Sup_text">Підтримка</span>
+                        <a class="Sup_link" href="mailto:support@cewatch.com">
+                            <span class="Ssup_text">Email</span>
+                            <div class="pointer-arrow"></div>
+                        </a>
+                    </div>
+                    <div class="Logo"></div>
+                </div>
+                <div class="F_Columns">
+                    <nav class="F_Column">
+                        <span class="F_link-community">Спільнота</span>
+                        <a href="#">Події</a>
+                        <a href="#">Блог</a>
+                        <a href="#">Підкаст</a>
+                        <a href="#">Запросити</a>
+                    </nav>
+                    <nav class="F_Column">
+                        <span class="F_link-socials">Соціальні мережі</span>
+                        <a href="#">Discord</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Twitter</a>
+                        <a href="#">Facebook</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+<!-- МОДАЛКА АКАУНТУ -->
+<div id="accountModal" class="modal-overlay" style="display: none;">
+    <div id="modalContent"></div>
+</div>
+
+<script src="scripts/modal-order.js"></script>
+<script src="../overlays/modal-overlays.js"></script>
+</body>
+</html>

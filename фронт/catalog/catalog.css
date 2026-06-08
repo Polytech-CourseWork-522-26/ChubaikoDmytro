@@ -1,0 +1,639 @@
+/* =====================
+   RESET & BASE
+   ===================== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+.Main {
+  width: 100%;
+  min-height: 100vh;
+  background: rgba(255, 255, 255, 1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow-x: hidden;
+}
+
+
+/* =====================
+   HEADER
+   ===================== */
+.Header {
+  width: 100%;
+  height: auto;
+  min-height: 70px;
+  opacity: 1;
+  position: relative;
+  top: 0;
+  padding: 40px 40px 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: visible;
+}
+
+.HeaderMenu {
+  opacity: 1;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.Text1 {
+  color: rgba(0, 0, 0, 1);
+  font-family: 'Crimson Text', serif;
+  font-size: 54px;
+  opacity: 1;
+  text-align: left;
+  line-height: 1;
+}
+
+.HomeButton,
+.OurPolicyButton,
+.CatalogButton,
+.ContactsButton {
+  position: relative;
+  color: rgba(0, 0, 0, 1);
+  font-family: 'Crimson Text', serif;
+  font-size: 28px;
+  opacity: 1;
+  text-align: left;
+  text-decoration: none;
+  width: auto;
+  transition: opacity 0.3s;
+}
+
+.HomeButton:hover,
+.OurPolicyButton:hover,
+.CatalogButton:hover,
+.ContactsButton:hover {
+  opacity: 0.6;
+}
+
+/* Active nav link (current page) */
+.CatalogButton.active {
+  border-bottom: 2px solid black;
+  padding-bottom: 2px;
+}
+
+.Icons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  opacity: 1;
+  position: relative;
+}
+
+.bg1, .bg2 {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.bg1:hover, .bg2:hover {
+  background: #f0f0f0;
+}
+
+.CartButton, .ProfileButton {
+  width: 22px;
+  height: 22px;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  transition: transform 0.2s;
+}
+
+.CartButton:hover, .ProfileButton:hover {
+  transform: scale(1.1);
+}
+
+.CartButton    { background-image: url("../images/gui/cart.png"); }
+.ProfileButton { background-image: url("../images/gui/profile.png"); }
+
+
+/* =====================
+   CATALOG TITLE
+   ===================== */
+.CatalogTitle {
+  padding: 60px 40px 0 40px;
+}
+
+.CatalogHeading {
+  font-family: 'Crimson Text', serif;
+  font-size: 96px;
+  font-weight: normal;
+  letter-spacing: 0.08em;
+  color: #000;
+  margin: 0;
+  line-height: 1;
+}
+
+
+/* =====================
+   FILTER BAR
+   ===================== */
+.FilterBar {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 30px 40px 10px 40px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  margin-bottom: 10px;
+}
+
+.FilterGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.FilterLabel {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14px;
+  color: rgba(145, 145, 145, 1);
+  white-space: nowrap;
+}
+
+.FilterSelect,
+.FilterInput {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14px;
+  color: #000;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 0;
+  padding: 6px 12px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.FilterSelect {
+  cursor: pointer;
+  appearance: auto;
+}
+
+.FilterInput::placeholder {
+  color: rgba(145, 145, 145, 0.8);
+}
+
+.FilterInput:focus,
+.FilterSelect:focus,
+.FilterInput:hover,
+.FilterSelect:hover {
+  border-color: #000;
+}
+
+/* Короткі поля для ціни */
+.FilterInputShort {
+  width: 90px;
+}
+
+.FilterSeparator {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14px;
+  color: rgba(145, 145, 145, 1);
+}
+
+/* Кнопка Застосувати */
+.FilterApplyBtn {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14px;
+  color: #fff;
+  background: #000;
+  border: 1px solid #000;
+  padding: 6px 18px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+  border-radius: 0;
+}
+
+.FilterApplyBtn:hover {
+  background: transparent;
+  color: #000;
+}
+
+.FilterCount {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14px;
+  color: rgba(145, 145, 145, 1);
+  margin-left: auto;
+}
+
+
+/* =====================
+   CATALOG GRID
+   ===================== */
+.CatalogGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 30px;
+  padding: 40px 40px 60px 40px;
+}
+
+.CatalogCard {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+  position: relative;
+  overflow: visible;
+}
+
+.CardImage {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  border: 1px solid white;
+  box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(6px);
+  border-radius: 17px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Overlay на ховер */
+.CardImage::after {
+  content: "Переглянути";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  opacity: 0;
+  border-radius: 17px;
+  transition: opacity 0.4s ease;
+}
+
+.CatalogCard:hover .CardImage {
+  border: 1px solid black;
+  transform: scale(1.02);
+  box-shadow: 20px 24px 60px rgba(0, 0, 0, 0.3);
+}
+
+.CatalogCard:hover .CardImage::after {
+  opacity: 1;
+}
+
+.CardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 16px;
+}
+
+.CardName {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+}
+
+.CardPrice {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14px;
+  color: rgba(80, 80, 80, 1);
+}
+
+
+/* =====================
+   ADD PRODUCT BUTTON
+   ===================== */
+.AddProductBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: transparent;
+  border: 2px dashed rgba(0, 0, 0, 0.25);
+  border-radius: 17px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Roboto Mono', monospace;
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+
+.AddProductBtn[hidden] {
+  display: none !important;
+}
+
+.AddProductBtn:hover {
+  border-color: #000;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.AddProductIcon {
+  font-size: 52px;
+  color: rgba(0, 0, 0, 0.25);
+  line-height: 1;
+  transition: color 0.3s ease, transform 0.3s ease;
+  font-weight: 200;
+}
+
+.AddProductBtn:hover .AddProductIcon {
+  color: #000;
+  transform: scale(1.1);
+}
+
+.AddProductText {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: rgba(0, 0, 0, 0.35);
+  transition: color 0.3s ease;
+}
+
+.AddProductBtn:hover .AddProductText {
+  color: #000;
+}
+
+
+/* =====================
+   PLACEHOLDER CARDS
+   ===================== */
+.CardPlaceholder {
+  pointer-events: none;
+}
+
+.CardImageEmpty {
+  background: linear-gradient(135deg, #f5f5f5 25%, #ececec 50%, #f5f5f5 75%);
+  background-size: 200% 200%;
+  animation: shimmer 2s infinite linear;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.PlaceholderLine {
+  display: block;
+  height: 14px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #ebebeb 25%, #e0e0e0 50%, #ebebeb 75%);
+  background-size: 200% 200%;
+  animation: shimmer 2s infinite linear;
+}
+
+.CardName.PlaceholderLine {
+  height: 16px;
+  margin-bottom: 6px;
+}
+
+.CardPrice.PlaceholderLine {
+  height: 13px;
+}
+
+
+.Pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 40px 80px 40px;
+}
+
+.PageBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 16px;
+  color: #000;
+  text-decoration: none;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+  transition: all 0.3s ease;
+}
+
+.PageBtn:hover {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+.PageBtn.active {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+
+/* =====================
+   FOOTER
+   ===================== */
+.Footer {
+  width: 100%;
+  min-height: 600px;
+  opacity: 1;
+  position: relative;
+  overflow: visible;
+}
+
+.F_container {
+  width: 100%;
+  min-height: 600px;
+  background: rgba(230, 181, 81, 1);
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.F_socials {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+}
+
+.F_holder {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.F_Columns {
+  display: flex;
+  gap: 60px;
+  position: relative;
+}
+
+.F_Column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: auto;
+  min-width: 150px;
+}
+
+.F_Column a, .Sup_link {
+  color: rgba(0, 0, 0, 1);
+  font-family: 'Roboto Mono', monospace;
+  text-decoration: none;
+  font-size: 20px;
+  position: relative;
+  transition: opacity 0.3s;
+}
+
+.F_Column a:hover {
+  opacity: 0.6;
+}
+
+.F_link-about, .F_link-community, .F_link-socials {
+  font-size: 26px !important;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.Support {
+  width: 330px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.Sup_text {
+  color: rgba(0, 0, 0, 1);
+  font-family: 'Roboto Mono', monospace;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.Sup_link {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
+  padding-bottom: 5px;
+  width: 100%;
+}
+
+.Ssup_text {
+  font-size: 24px;
+}
+
+.pointer-arrow {
+  width: 19px;
+  height: 12px;
+  background: url(../images/gui/Vector-right.png) no-repeat center;
+  background-size: contain;
+  margin-left: auto;
+}
+
+.Logo {
+  width: 250px;
+  height: 250px;
+  background: url("../images/logo-white.png") no-repeat center;
+  background-size: contain;
+  opacity: 0.8;
+  margin-top: 20px;
+}
+
+.line1, .line2 { display: none; }
+
+
+/* =====================
+   OUT OF STOCK BADGE (admin only)
+   ===================== */
+.CardOutOfStockBadge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: #fff;
+  background: rgba(0,0,0,0.75);
+  padding: 4px 10px;
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* =====================
+   RESPONSIVE (basic)
+   ===================== */
+@media (max-width: 1024px) {
+  .CatalogGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .CatalogGrid {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .CatalogHeading {
+    font-size: 56px;
+  }
+
+  .Header {
+    padding: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .HeaderMenu {
+    gap: 15px;
+  }
+
+  .F_Columns {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .F_socials {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+.OrdersButton {
+  font-family: 'Crimson Text', serif;
+  font-size: 28px;
+  color: #000;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+.OrdersButton:hover { opacity: 0.6; }
+.OrdersButton.active {
+  border-bottom: 2px solid #000;
+  padding-bottom: 2px;
+}
+.HomeButton.active,
+.CatalogButton.active {
+  border-bottom: 2px solid #000;
+  padding-bottom: 2px;
+}

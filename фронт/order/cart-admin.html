@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet" />
+    <link href="css/cart-admin.css" rel="stylesheet" />
+    <link href="../overlays/overlay-style.css" rel="stylesheet" />
+    <title>CE — Адмін · Замовлення</title>
+</head>
+<body>
+<div class="Main">
+
+    <!-- HEADER -->
+    <header class="Header">
+        <a class="Text1" href="../main/index.html">CE</a>
+        <nav class="HeaderMenu">
+            <a class="HomeButton" href="../main/index.html">Дім</a>
+            <a class="CatalogButton" href="../catalog/catalog.html">Каталог</a>
+            <a class="OrdersButton active" href="order.html">Замовлення</a>
+        </nav>
+        <div class="Icons">
+            <div class="bg1"><button class="ProfileButton" id="profileBtn" aria-label="Профіль"></button></div>
+            <div class="bg2"><button class="CartButton"   id="cartBtn"    aria-label="Кошик"></button></div>
+        </div>
+    </header>
+
+    <!-- PAGE TITLE -->
+    <div class="AdminTitle">
+        <h1 class="AdminHeading">ЗАМОВЛЕННЯ</h1>
+        <span class="AdminRoleBadge">АДМІНІСТРАТОР</span>
+    </div>
+
+    <!-- STATS -->
+    <div class="AdminStats">
+        <div class="AdminStat gold">
+            <div class="AdminStatLabel">ОЧІКУЮТЬ</div>
+            <div class="AdminStatVal" id="statPending">—</div>
+        </div>
+        <div class="AdminStat">
+            <div class="AdminStatLabel">ПІДТВЕРДЖЕНО</div>
+            <div class="AdminStatVal" id="statApproved">—</div>
+        </div>
+        <div class="AdminStat">
+            <div class="AdminStatLabel">ВІДХИЛЕНО</div>
+            <div class="AdminStatVal" id="statRejected">—</div>
+        </div>
+        <div class="AdminStat">
+            <div class="AdminStatLabel">ВИРУЧКА (підтверджені)</div>
+            <div class="AdminStatVal" id="statRevenue">—</div>
+        </div>
+    </div>
+
+    <!-- TOOLBAR -->
+    <div class="AdminToolbar">
+        <button class="AdminTab active" onclick="filterAdmin('all',this)">Всі</button>
+        <button class="AdminTab" onclick="filterAdmin('pending',this)">Очікують</button>
+        <button class="AdminTab" onclick="filterAdmin('approved',this)">Підтверджені</button>
+        <button class="AdminTab" onclick="filterAdmin('rejected',this)">Відхилені</button>
+        <input class="AdminSearch" type="text" placeholder="Пошук по ID або email..." oninput="searchAdmin(this.value)">
+    </div>
+
+    <!-- TABLE HEADER -->
+    <div class="AdminTableHeader">
+        <div>ID</div>
+        <div>КОРИСТУВАЧ</div>
+        <div>ДАТА</div>
+        <div>СУМА</div>
+        <div>СТАТУС</div>
+        <div>ДІЇ</div>
+    </div>
+
+    <!-- ORDERS LIST -->
+    <div class="AdminList" id="adminList">
+        <p style="font-family:'Roboto Mono',monospace;font-size:13px;color:rgba(145,145,145,1);padding:40px 0;">Завантаження...</p>
+    </div>
+
+        <!-- FOOTER -->
+    <footer class="Footer">
+        <div class="F_container">
+            <div class="F_socials">
+                <div class="F_holder">
+                    <div class="Support">
+                        <span class="Sup_text">Підтримка</span>
+                        <a class="Sup_link" href="mailto:support@cewatch.com">
+                            <span class="Ssup_text">Email</span>
+                            <div class="pointer-arrow"></div>
+                        </a>
+                    </div>
+                    <div class="Logo"></div>
+                </div>
+                <div class="F_Columns">
+                    <nav class="F_Column">
+                        <span class="F_link-community">Спільнота</span>
+                        <a href="#">Події</a>
+                        <a href="#">Блог</a>
+                        <a href="#">Підкаст</a>
+                        <a href="#">Запросити</a>
+                    </nav>
+                    <nav class="F_Column">
+                        <span class="F_link-socials">Соціальні мережі</span>
+                        <a href="#">Discord</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Twitter</a>
+                        <a href="#">Facebook</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+<!-- ACCOUNT MODAL -->
+<div id="accountModal" style="display:none;position:fixed;inset:0;z-index:1000;align-items:center;justify-content:center;background:rgba(0,0,0,0.5);">
+    <div id="modalContent"></div>
+</div>
+
+<script src="scripts/modal-order.js"></script>
+<script src="../overlays/modal-overlays.js"></script>
+<script>
+// ── Захист сторінки: тільки для адміна ──────────────────
+(function() {
+    const role = localStorage.getItem('userRole');
+    if (parseInt(role) !== 1) {
+        alert('Доступ заборонено. Тільки для адміністраторів.');
+        window.location.href = '../main/index.html';
+    }
+})();
+</script>
+</body>
+</html>

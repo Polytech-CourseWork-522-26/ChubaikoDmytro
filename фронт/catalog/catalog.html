@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet" />
+    <link href="catalog.css" rel="stylesheet" />
+    <link href="../overlays/overlay-style.css" rel="stylesheet" />
+    <title>CE — Каталог</title>
+</head>
+<body>
+    <div class="Main">
+
+        <!-- HEADER -->
+        <header class="Header">
+        <a class="Text1" href="../main/index.html">CE</a>
+        <nav class="HeaderMenu">
+            <a class="HomeButton" href="../main/index.html">Дім</a>
+            <a class="CatalogButton active" href="catalog.html">Каталог</a>
+            <a class="OrdersButton" href="../order/order.html">Замовлення</a>
+        </nav>
+        <div class="Icons">
+            <div class="bg1" id="profileBtn"><a class="ProfileButton"></a></div>
+            <div class="bg2" id="cartBtn"><a class="CartButton"></a></div>
+        </div>
+    </header>
+
+        <!-- PAGE TITLE -->
+        <div class="CatalogTitle">
+            <h1 class="CatalogHeading">CATALOG</h1>
+        </div>
+
+        <!-- FILTER BAR -->
+        <!-- Параметри відповідають filterProducts(name, minP, maxP, ascending) у C++ -->
+        <div class="FilterBar">
+
+            <!-- name → strstr(modelName, name) -->
+            <div class="FilterGroup">
+                <span class="FilterLabel">Пошук:</span>
+                <input
+                    class="FilterInput"
+                    type="text"
+                    id="filter-name"
+                    name="name"
+                    placeholder="Назва товару..."
+                    autocomplete="off"
+                />
+            </div>
+
+            <!-- minP та maxP → price >= minP && price <= maxP -->
+            <div class="FilterGroup">
+                <span class="FilterLabel">Ціна:</span>
+                <input
+                    class="FilterInput FilterInputShort"
+                    type="number"
+                    id="filter-min"
+                    name="minP"
+                    placeholder="від $"
+                    min="0"
+                />
+                <span class="FilterSeparator">—</span>
+                <input
+                    class="FilterInput FilterInputShort"
+                    type="number"
+                    id="filter-max"
+                    name="maxP"
+                    placeholder="до $"
+                    min="0"
+                />
+            </div>
+
+            <!-- ascending → true = зростання, false = спадання -->
+            <div class="FilterGroup">
+                <span class="FilterLabel">Сортувати:</span>
+                <select class="FilterSelect" id="filter-sort" name="ascending">
+                    <option value="true">Ціна: від низької</option>
+                    <option value="false">Ціна: від високої</option>
+                </select>
+            </div>
+
+            <!-- Кнопка застосувати — тут підключається запит до бекенду -->
+            <button class="FilterApplyBtn" id="filter-apply">Застосувати</button>
+
+            <span class="FilterCount" id="filterCount">— товарів</span>
+        </div>
+
+        <!-- CATALOG GRID -->
+        <section class="CatalogGrid" id="catalog-grid">
+
+            <!--
+                ADD PRODUCT BUTTON — лише для адміна.
+                Прихована за замовчуванням (hidden).
+                Бекенд (Java) після перевірки ролі має:
+                  — прибрати атрибут hidden через серверний рендер, АБО
+                  — повернути isAdmin:true в API і JS прибирає hidden.
+                НЕ робити перевірку тільки на JS-стороні!
+            -->
+            <a class="AddProductBtn" href="add-product.html" id="addProductBtn" hidden>
+                <div class="AddProductIcon">+</div>
+                <span class="AddProductText">Додати товар</span>
+            </a>
+
+            <!-- ПОРОЖНІ ЗАГОТОВКИ КАРТОК -->
+            <div class="CatalogCard CardPlaceholder">
+                <div class="CardImage CardImageEmpty"></div>
+                <div class="CardInfo">
+                    <span class="CardName PlaceholderLine" style="width: 70%;"></span>
+                    <span class="CardPrice PlaceholderLine" style="width: 40%;"></span>
+                </div>
+            </div>
+
+            <div class="CatalogCard CardPlaceholder">
+                <div class="CardImage CardImageEmpty"></div>
+                <div class="CardInfo">
+                    <span class="CardName PlaceholderLine" style="width: 60%;"></span>
+                    <span class="CardPrice PlaceholderLine" style="width: 35%;"></span>
+                </div>
+            </div>
+
+            <div class="CatalogCard CardPlaceholder">
+                <div class="CardImage CardImageEmpty"></div>
+                <div class="CardInfo">
+                    <span class="CardName PlaceholderLine" style="width: 75%;"></span>
+                    <span class="CardPrice PlaceholderLine" style="width: 45%;"></span>
+                </div>
+            </div>
+
+            <div class="CatalogCard CardPlaceholder">
+                <div class="CardImage CardImageEmpty"></div>
+                <div class="CardInfo">
+                    <span class="CardName PlaceholderLine" style="width: 55%;"></span>
+                    <span class="CardPrice PlaceholderLine" style="width: 38%;"></span>
+                </div>
+            </div>
+
+            <div class="CatalogCard CardPlaceholder">
+                <div class="CardImage CardImageEmpty"></div>
+                <div class="CardInfo">
+                    <span class="CardName PlaceholderLine" style="width: 65%;"></span>
+                    <span class="CardPrice PlaceholderLine" style="width: 42%;"></span>
+                </div>
+            </div>
+
+        </section>
+
+            <!-- FOOTER -->
+    <footer class="Footer">
+        <div class="F_container">
+            <div class="F_socials">
+                <div class="F_holder">
+                    <div class="Support">
+                        <span class="Sup_text">Підтримка</span>
+                        <a class="Sup_link" href="mailto:support@cewatch.com">
+                            <span class="Ssup_text">Email</span>
+                            <div class="pointer-arrow"></div>
+                        </a>
+                    </div>
+                    <div class="Logo"></div>
+                </div>
+                <div class="F_Columns">
+                    <nav class="F_Column">
+                        <span class="F_link-community">Спільнота</span>
+                        <a href="#">Події</a>
+                        <a href="#">Блог</a>
+                        <a href="#">Підкаст</a>
+                        <a href="#">Запросити</a>
+                    </nav>
+                    <nav class="F_Column">
+                        <span class="F_link-socials">Соціальні мережі</span>
+                        <a href="#">Discord</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Twitter</a>
+                        <a href="#">Facebook</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    </div>
+    <!-- МОДАЛКА АКАУНТУ -->
+    <div id="accountModal" class="modal-overlay" style="display: none;">
+        <div id="modalContent"></div>
+    </div>
+
+    <script src="../overlays/modal-overlays.js"></script>
+    <script src="../order/scripts/modal-order.js"></script>
+    <script src="scripts/modal-catalog.js"></script>
+</body>
+</body>
+</html>

@@ -1,0 +1,634 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 14px;
+  margin: 0; /* Прибираємо стандартні відступи браузера */
+  padding: 0;
+}
+
+.Main {
+  width: 100%;
+  min-height: 100vh; /* Замість фіксованої висоти — мінімум 100% висоти екрана */
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: relative; /* Змінено з absolute на relative, щоб вкладені блоки не накладалися */
+  top: 0px;
+  left: 0px;
+  overflow-x: hidden; /* Запобігає появі горизонтальної прокрутки */
+}
+
+
+/* HEADER FOLDERS */
+
+.Header {
+  width: 100%;
+  height: auto; /* Дозволяємо контенту визначати висоту */
+  min-height: 70px;
+  opacity: 1;
+  position: relative; /* Змінено з absolute на relative */
+  top: 0;
+  padding: 40px 40px 20px 40px; /* Додаємо відступи замість жорстких координат */
+  display: flex;
+  justify-content: space-between; /* Лого зліва, меню/іконки справа або по центру */
+  align-items: center;
+  overflow: visible; /* Щоб не обрізати шрифти, що виступають */
+}
+
+.HeaderMenu {
+  /* Прибираємо фіксовану ширину та абсолютну позицію */
+  opacity: 1;
+  display: flex;
+  gap: 30px; /* Відстань між кнопками меню */
+  align-items: center;
+}
+
+.Text1 {
+  color: rgba(0,0,0,1);
+  font-family: 'Crimson Text', serif;
+  font-size: 54px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+
+/* BUTTONS HEADER */
+
+.HomeButton,
+.CatalogButton,
+.OrdersButton {
+  position: relative;
+  color: rgba(0,0,0,1);
+  font-family: 'Crimson Text', serif;
+  font-size: 28px;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.HomeButton:hover,
+.CatalogButton:hover,
+.OrdersButton:hover { opacity: 0.6; }
+
+.HomeButton.active,
+.CatalogButton.active,
+.OrdersButton.active {
+  border-bottom: 2px solid #000;
+  padding-bottom: 2px;
+}
+
+
+/* ICONS */
+
+.Icons {
+  display: flex;         /* Вишиковуємо іконки в ряд */
+  gap: 15px;             /* Відстань між іконками */
+  align-items: center;
+  opacity: 1;
+  position: relative;    /* Змінено з absolute: 1700px */
+}
+
+.bg1, .bg2 {
+  width: 32px;
+  height: 32px;
+  background: rgba(255,255,255,1);
+  border-radius: 50%;    /* Робимо фон круглим для кращого вигляду */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.3s;
+}
+
+.bg1:hover, .bg2:hover {
+  background: #f0f0f0;   /* Ефект при наведенні */
+}
+
+/* Кнопки всередині фонів */
+.CartButton, .ProfileButton {
+  width: 21px;
+  height: 21px;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain; /* Contain краще для іконок, щоб не обрізалися */
+  opacity: 1;
+  transition: transform 0.2s;
+}
+
+.CartButton:hover, .ProfileButton:hover {
+  transform: scale(1.1); /* Легке збільшення самої іконки */
+}
+
+/* Шляхи до картинок залишаються твоїми */
+.CartButton { background-image: url("../images/gui/cart.png"); }
+.ProfileButton { background-image: url("../images/gui/profile.png"); }
+
+
+/* PRODUCT PICTURES */
+.Product {
+  width: 100%;
+  min-height: 900px;
+  opacity: 1;
+  position: relative; /* Змінено з absolute */
+  margin-top: 50px;    /* Відступ замість top: 205px */
+  display: flex;      /* Використовуємо Flexbox для всього блоку */
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;          /* Відстань між галереєю та описом */
+  padding: 0 40px;
+  overflow: visible;
+}
+
+/* Контейнер для малих фото (ліва колонка) */
+.P_gallery_side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 60px;
+}
+
+.P_pic1, .P_pic3 {
+  width: 168px;
+  height: 254px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: relative; /* Змінено з absolute */
+  border: 1px solid white;
+  box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(6px);
+  border-radius: 17px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+/* Фони мініатюр встановлюються динамічно через JS */
+.P_pic1 { background-color: #f0f0ee; }
+.P_pic3 { background-color: #f0f0ee; }
+
+.P_pic1:hover, .P_pic3:hover {
+  border: 1px solid black;
+  transform: scale(1.05);
+}
+
+/* Головне фото */
+.P_display {
+  width:  550px;
+  height: 560px;
+  background-color: #f5f5f3;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: relative;
+  border-radius: 30px;
+  box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+}
+
+/* Блок з інформацією (текст справа) */
+.P_info_block {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  padding-top: 60px;
+}
+
+.P_text {
+  color: rgba(0,0,0,1);
+  font-family: 'Roboto Mono', monospace;
+  font-size: 28px;
+  opacity: 1;
+  margin-bottom: 30px;
+}
+
+.P_desc_elem {
+  color: rgba(0,0,0,1);
+  font-family: 'Crimson Text', serif;
+  font-weight: bold;
+  font-size: 24px;
+  opacity: 1;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+.P_description {
+  color: rgba(0,0,0,1);
+  font-family: 'Roboto Mono', monospace;
+  font-size: 20px; /* Трохи зменшив для кращого вигляду */
+  opacity: 1;
+  text-align: justify;
+  line-height: 1.5;
+}
+
+
+/* MAP */
+.Map {
+  width: auto;
+  height: auto;
+  opacity: 1;
+  position: relative; /* Змінено з absolute */
+  margin: 140px 0 20px 40px; /* Відступи: зверху (щоб бути під хедером), зліва 40px */
+  display: flex; /* Вишиковуємо елементи в ряд */
+  gap: 15px;     /* Відстань між "Дім", "Каталог" тощо */
+  overflow: visible;
+}
+
+.MapElement1, 
+.MapElement2, 
+.MapElement3 {
+  width: auto; /* Ширина залежить від тексту */
+  position: relative; /* Змінено з absolute */
+  top: 0;
+  left: 0;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 24px;
+  opacity: 1;
+  text-align: left;
+}
+
+.MapElement1, 
+.MapElement2 {
+  color: rgba(145,145,145,1);
+}
+
+.MapElement3 {
+  color: rgba(0,0,0,1);
+  font-weight: bold; /* Виділяємо поточну сторінку */
+}
+
+/* Додаємо розділювач (слеш) між елементами через CSS, щоб не правити HTML */
+.MapElement1::after, 
+.MapElement2::after {
+  content: "/";
+  margin-left: 15px;
+  color: rgba(145,145,145,1);
+}
+
+
+/* PROPOSITIONS */
+
+.Text2 {
+  width: auto;
+  color: rgba(0,0,0,1);
+  position: relative; /* Змінено з absolute */
+  margin: 80px 0 30px 40px; /* Відступ від блоку продукту та зліва */
+  font-family: 'Roboto Mono', monospace;
+  font-weight: bold;
+  font-size: 48px;
+  opacity: 1;
+  text-align: left;
+}
+
+.prop_fold {
+  width: 100%;
+  height: auto;
+  opacity: 1;
+  position: relative; /* Змінено з absolute */
+  top: 0;
+  display: flex;      /* Картки в ряд */
+  justify-content: center;
+  gap: 30px;          /* Відстань між картками */
+  padding: 0 40px 100px 40px;
+  overflow: visible;
+}
+
+.prop {
+  width: 465px;       /* Ширина картки відповідає ширині фото */
+  height: auto;
+  opacity: 1;
+  position: relative; /* Змінено з absolute */
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.img1, .img2, .img3 {
+  width: 465px;
+  height: 671px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: relative; /* Змінено з absolute */
+  top: 0;
+  left: 0;
+  border: 1px solid white;
+  box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(6px);
+  border-radius: 17px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+/* Прибираємо дублювання стилів, залишаємо тільки фони */
+.img1 { background-image: url(../images/Watch01.png); }
+.img2 { background-image: url(../images/Watch12.jpg); }
+.img3 { background-image: url(../images/Watch13.jpg); }
+
+.img1:hover, .img2:hover, .img3:hover {
+  border: 1px solid black;
+  transform: scale(1.03);
+}
+
+.prop_desc {
+  width: 100%;
+  color: rgba(0,0,0,1);
+  position: relative; /* Змінено з absolute */
+  top: 20px;         /* Відступ від картинки до тексту */
+  left: 0;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: bold;
+  font-size: 24px;
+  opacity: 1;
+  text-align: left;
+}
+
+
+/* FOOTER */
+.Footer {
+  width: 100%;
+  min-height: 600px; /* Дозволяємо висоті підлаштовуватися */
+  opacity: 1;
+  position: relative; /* Змінено з absolute */
+  margin-top: 100px;   /* Відступ від контенту */
+  overflow: visible;
+}
+
+.F_container {
+  width: 100%;
+  min-height: 600px;
+  background: rgba(230,181,81,1);
+  padding: 80px 60px; /* Внутрішні відступи замість координат */
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.F_socials {
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* Лого/Підтримка зліва, колонки справа */
+  align-items: flex-start;
+  position: relative;
+}
+
+.F_holder {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Колонки з посиланнями */
+.F_Columns {
+  display: flex;
+  gap: 60px; /* Відстань між трьома колонками */
+  position: relative;
+}
+
+.F_Column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Відстань між посиланнями в колонці */
+  width: auto;
+  min-width: 150px;
+}
+
+/* Загальний стиль для всіх посилань у футері */
+.F_Column a, .Sup_link {
+  color: rgba(0,0,0,1);
+  font-family: 'Roboto Mono', monospace;
+  text-decoration: none;
+  font-size: 20px;
+  position: relative;
+  transition: opacity 0.3s;
+}
+
+.F_Column a:hover {
+  opacity: 0.6;
+}
+
+/* Заголовки колонок (робимо більшими) */
+.F_link-about, .F_link-community, .F_link-socials {
+  font-size: 26px !important;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Блок підтримки */
+.Support {
+  width: 330px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.Sup_text {
+  color: rgba(0,0,0,1);
+  font-family: 'Roboto Mono', monospace;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.Sup_link {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black; /* Заміна line1 */
+  padding-bottom: 5px;
+  width: 100%;
+}
+
+.Ssup_text {
+  font-size: 24px;
+}
+
+.pointer-arrow {
+  width: 19px;
+  height: 12px;
+  background: url(../images/gui/Vector-right.png) no-repeat center;
+  background-size: contain;
+  margin-left: auto; /* Штовхає стрілку в самий край */
+}
+
+/* Логотип у футері */
+.Logo {
+  width: 250px;
+  height: 250px;
+  background: url("../images/logo-white.png") no-repeat center;
+  background-size: contain;
+  opacity: 0.8;
+  margin-top: 20px;
+}
+
+/* Прибираємо старі лінії, бо ми використали border */
+.line1, .line2 { display: none; }
+
+/* SPECIAL STYLES */ 
+
+.fancy {
+  background-color: transparent;
+  border: 2px solid #000;
+  border-radius: 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  outline: none;
+  overflow: visible;
+  padding: 1.25em 2em;
+  position: relative; /* Залишаємо relative для внутрішніх absolute елементів */
+  /* ПРИБРАНО жорсткі top та left */
+  margin: 20px 0;    /* Додаємо невеликий відступ зверху та знизу */
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+  transition: all 0.3s ease-in-out;
+  user-select: none;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 23px;
+}
+
+.fancy .text {
+  font-size: 1.125em;
+  line-height: 1.33333em;
+  text-decoration: none;
+  color: black;
+  transition: color 0.3s;
+}
+
+.fancy .top-key {
+  height: 2px;
+  width: 1.5625rem;
+  top: -2px;
+  left: 0.625rem;
+  position: absolute;
+  background: #ffffff; /* Змінено з #e8e8e8 для білого фону */
+  transition: width 0.5s ease-out, left 0.3s ease-out;
+}
+
+.fancy .bottom-key-1 {
+  height: 2px;
+  width: 1.5625rem;
+  right: 1.875rem;
+  bottom: -2px;
+  position: absolute;
+  background: #ffffff; /* Змінено з #e8e8e8 */
+  transition: width 0.5s ease-out, right 0.3s ease-out;
+}
+
+.fancy .bottom-key-2 {
+  height: 2px;
+  width: 0.625rem;
+  right: 0.625rem;
+  bottom: -2px;
+  position: absolute;
+  background: #ffffff; /* Змінено з #e8e8e8 */
+  transition: width 0.5s ease-out, right 0.3s ease-out;
+}
+
+.fancy:hover {
+  color: white;
+  background: black;
+}
+
+.fancy:hover .text {
+  color: white;
+}
+
+.fancy:hover .top-key {
+  width: 0px;
+}
+
+.fancy:hover .bottom-key-1,
+.fancy:hover .bottom-key-2 {
+  right: 0;
+  width: 0;
+}
+
+/* Стрілочки (якщо використовуються) */
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  transition: border-color 0.3s;
+}
+
+.fancy:hover .arrow {
+  border-color: white;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+/* =====================
+   PRODUCT STATUS BADGE
+   ===================== */
+.P_status {
+    display: inline-block;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    margin-bottom: 14px;
+    border: 1px solid currentColor;
+}
+.P_status.in-stock     { color: #5a9a5a; border-color: #5a9a5a; }
+.P_status.out-of-stock { color: #c05050; border-color: #c05050; }
+
+/* =====================
+   3D MODEL VIEWER
+   ===================== */
+.P_model_viewer_wrap {
+    width: 100%;
+    background: #f5f5f3;
+    border: 1px solid #e8e8e4;
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+model-viewer {
+    width: 100%;
+    height: 100%;
+    --poster-color: transparent;
+}
+
+/* =====================
+   TAB SWITCHER (фото / 3D)
+   ===================== */
+.P_view_tabs {
+    display: none;
+    gap: 0;
+    margin-bottom: 0;
+}
+.P_view_tabs.has-both { display: flex; }
+
+.P_tab_btn {
+    flex: 1;
+    padding: 8px 0;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: #f0f0ee;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    cursor: pointer;
+    color: #888;
+    transition: background 0.15s, color 0.15s;
+}
+.P_tab_btn.active      { background: #fff; color: #111; border-color: #bbb; }
+.P_tab_btn:first-child { border-right: none; }
+
+.P_display.hidden-tab         { display: none !important; }
+.P_model_viewer_wrap.hidden-tab { display: none !important; }

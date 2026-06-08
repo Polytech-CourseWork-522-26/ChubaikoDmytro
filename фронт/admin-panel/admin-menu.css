@@ -1,0 +1,95 @@
+/* ═══════════════════════════════════════════════════
+   admin-menu.css
+   Стилі оверлею панелі адміністратора
+   ═══════════════════════════════════════════════════ */
+
+.admin-menu-card {
+    background: #fff;
+    width: 420px;
+    padding: 0;
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.admin-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 32px 20px 32px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.admin-menu-title {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: rgba(145,145,145,1);
+}
+
+.admin-menu-close {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: rgba(145,145,145,1);
+    transition: color 0.2s;
+    padding: 0;
+}
+.admin-menu-close:hover { color: #000; }
+
+.admin-menu-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 22px 32px;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    text-decoration: none;
+    color: #000;
+    transition: background 0.15s;
+    cursor: pointer;
+}
+.admin-menu-item:last-child { border-bottom: none; }
+.admin-menu-item:hover { background: rgba(0,0,0,0.03); }
+
+.admin-menu-item-icon {
+    font-size: 22px;
+    color: rgba(145,145,145,1);
+    width: 28px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.admin-menu-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1;
+}
+
+.admin-menu-item-label {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 15px;
+    font-weight: bold;
+    color: #000;
+}
+
+.admin-menu-item-desc {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    color: rgba(145,145,145,1);
+}
+
+.admin-menu-item-arrow {
+    font-size: 18px;
+    color: rgba(145,145,145,1);
+    transition: transform 0.2s, color 0.2s;
+}
+.admin-menu-item:hover .admin-menu-item-arrow {
+    transform: translateX(4px);
+    color: #000;
+}

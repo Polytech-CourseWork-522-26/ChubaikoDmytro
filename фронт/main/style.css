@@ -1,0 +1,572 @@
+/* =====================
+   RESET & BASE
+   ===================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto Mono', monospace;
+  background: #fff;
+  color: #000;
+  overflow-x: hidden;
+}
+
+/* =====================
+   HEADER
+   ===================== */
+.Header {
+  width: 100%;
+  padding: 32px 40px 24px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.Text1 {
+  font-family: 'Crimson Text', serif;
+  font-size: 54px;
+  line-height: 1;
+  color: #000;
+  text-decoration: none;
+}
+
+.HeaderMenu {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.HomeButton,
+.AboutButton,
+.CatalogButton,
+.OrdersButton {
+  font-family: 'Crimson Text', serif;
+  font-size: 28px;
+  color: #000;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+.HomeButton:hover,
+.AboutButton:hover,
+.CatalogButton:hover,
+.OrdersButton:hover { opacity: 0.5; }
+
+.HomeButton.active,
+.AboutButton.active,
+.CatalogButton.active,
+.OrdersButton.active {
+  border-bottom: 2px solid #000;
+  padding-bottom: 2px;
+}
+
+.Icons {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+.bg1, .bg2 {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+.bg1:hover, .bg2:hover { background: #f0f0f0; }
+
+.ProfileButton, .CartButton {
+  width: 22px; height: 22px;
+  display: block;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  transition: transform 0.2s;
+}
+.ProfileButton:hover, .CartButton:hover { transform: scale(1.1); }
+.ProfileButton { background-image: url("../images/gui/profile.png"); }
+.CartButton    { background-image: url("../images/gui/cart.png"); }
+
+
+/* =====================
+   HERO
+   ===================== */
+.Hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 72vh;
+  align-items: end;
+  padding: 40px 40px 0 40px;
+  gap: 40px;
+}
+
+.HeroLeft { padding-bottom: 60px; }
+
+.HeroTagline {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: rgba(145,145,145,1);
+  margin-bottom: 24px;
+}
+
+.HeroTitle {
+  font-family: 'Roboto Mono', monospace;
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #000;
+  margin: 0 0 40px 0;
+}
+
+.HeroRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+}
+
+.HeroImage {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 0.83;
+  object-fit: cover;
+}
+
+.HeroImageCaption {
+  display: flex;
+  gap: 50px;
+  align-items: baseline;
+}
+.HeroCollectionName {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 18px;
+  font-weight: 700;
+  color: #c6a664;
+}
+.HeroYear {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+}
+
+
+/* =====================
+   TICKER STRIP
+   ===================== */
+.TickerStrip {
+  width: 100%;
+  background: #e6b551;
+  overflow: hidden;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+.TickerTrack {
+  display: flex;
+  white-space: nowrap;
+  animation: ticker 50s linear infinite;
+}
+.TickerStrip:hover .TickerTrack { animation-play-state: paused; }
+
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.TickerItem {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+  padding: 0 20px;
+  white-space: nowrap;
+}
+.TickerDot { opacity: 0.35; }
+
+
+/* =====================
+   COLLECTION FEATURE
+   ===================== */
+.CollectionSection {
+  width: 100%;
+  min-height: 60vh;
+  background: #111;
+  background-image: url('../images/Watch03.png');
+  background-size: cover;
+  background-position: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  padding: 56px 40px;
+  gap: 40px;
+}
+
+.CollectionLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 60vh;
+  gap: 40px;
+}
+
+.CollectionMeta {
+  display: flex;
+  align-items: baseline;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.CollectionLabel {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 18px;
+  font-weight: 700;
+  color: #c6a664;
+}
+.CollectionSub {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+}
+.CollectionPrice {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.CollectionDesc {
+  background: rgba(217,217,217,0.88);
+  padding: 24px 32px;
+  max-width: 580px;
+}
+.CollectionDesc p {
+  font-family: 'Crimson Text', serif;
+  font-size: 20px;
+  line-height: 1.65;
+  color: #000;
+  margin: 0;
+  text-align: justify;
+}
+
+.CollectionRight {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  align-items: flex-end;
+}
+.CollectionImg {
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 1.5;
+  object-fit: cover;
+}
+
+
+/* =====================
+   ABOUT
+   ===================== */
+.AboutSection {
+  padding: 100px 40px;
+}
+
+.AboutSubtitle {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 16px;
+  color: rgba(116,114,114,1);
+  margin: 0 0 10px 0;
+}
+
+.AboutHeading {
+  font-family: 'Crimson Text', serif;
+  font-size: clamp(56px, 7vw, 110px);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: #000;
+  margin: 0 0 16px 0;
+  line-height: 1.05;
+}
+
+.AboutTagline {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 16px;
+  color: #000;
+  margin: 0 0 60px 0;
+}
+
+.AboutGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.AboutText p {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 14px;
+  line-height: 1.85;
+  color: #000;
+  margin: 0 0 24px 0;
+}
+
+.AboutImageBlock { position: relative; }
+.AboutImage {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 0.9;
+  object-fit: cover;
+}
+.AboutLogoOverlay {
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  width: 150px; height: 150px;
+  background: url('../images/logo-white.png') no-repeat center;
+  background-size: contain;
+  opacity: 0.7;
+}
+
+
+/* =====================
+   CATALOG PREVIEW
+   ===================== */
+.CatalogSection {
+  background: #000;
+  padding: 60px 40px 80px 40px;
+}
+
+.CatalogSectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 48px;
+}
+.CatalogSectionTitle {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+.CatalogSectionLink {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 15px;
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: opacity 0.2s;
+}
+.CatalogSectionLink:hover { opacity: 0.6; }
+
+.CatalogArrow {
+  display: inline-block;
+  width: 22px; height: 14px;
+  background: url('../images/gui/Vector-right.png') no-repeat center;
+  background-size: contain;
+  filter: invert(1);
+}
+
+.CatalogPreviewGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Перша картка — велика (2 рядки) */
+.CatalogPreviewCard {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+}
+.CatalogPreviewCard:first-child {
+  grid-row: span 2;
+}
+
+.CatalogPreviewImg {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.CatalogPreviewCard:first-child .CatalogPreviewImg {
+  min-height: 420px;
+}
+.CatalogPreviewCard:hover .CatalogPreviewImg { transform: scale(1.04); }
+
+.CatalogPreviewInfo {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 14px 18px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.72));
+}
+.CatalogPreviewName {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 3px;
+}
+.CatalogPreviewPrice {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+}
+
+
+/* =====================
+   FOOTER
+   ===================== */
+.Footer {
+  background: #e6b551;
+  padding: 80px 60px;
+}
+
+.FooterInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 60px;
+}
+
+.FooterLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  min-width: 260px;
+}
+
+.FooterSupportTitle {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 36px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 20px;
+  display: block;
+}
+.FooterEmailLink {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #000;
+  padding-bottom: 6px;
+  text-decoration: none;
+  color: #000;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 20px;
+  transition: opacity 0.2s;
+}
+.FooterEmailLink:hover { opacity: 0.6; }
+.FooterEmailArrow {
+  display: inline-block;
+  width: 20px; height: 12px;
+  background: url('../images/gui/Vector-right.png') no-repeat center;
+  background-size: contain;
+  margin-left: auto;
+}
+
+.FooterLogo {
+  width: 200px; height: 200px;
+  background: url('../images/logo-white.png') no-repeat center;
+  background-size: contain;
+  opacity: 0.75;
+}
+
+.FooterColumns {
+  display: flex;
+  gap: 60px;
+}
+.FooterColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 140px;
+}
+.FooterColumnTitle {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 6px;
+}
+.FooterColumn a {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 16px;
+  color: #000;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.FooterColumn a:hover { opacity: 0.55; }
+
+
+/* =====================
+   RESPONSIVE
+   ===================== */
+@media (max-width: 1100px) {
+  .CatalogPreviewGrid { grid-template-columns: repeat(2, 1fr); }
+  .CatalogPreviewCard:first-child { grid-row: span 1; }
+  .CatalogPreviewCard:first-child .CatalogPreviewImg { min-height: 280px; }
+  .AboutGrid { grid-template-columns: 1fr; gap: 40px; }
+  .AboutImageBlock { display: none; }
+  .CollectionSection { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .Header { padding: 18px 20px; }
+  .HeaderMenu { gap: 14px; }
+  .HomeButton, .AboutButton, .CatalogButton, .OrdersButton { font-size: 20px; }
+  .Hero { grid-template-columns: 1fr; min-height: auto; padding: 40px 20px 0; }
+  .HeroRight { align-items: flex-start; }
+  .CatalogPreviewGrid { grid-template-columns: 1fr; }
+  .FooterInner { flex-direction: column; }
+  .FooterColumns { flex-direction: column; gap: 28px; }
+  .AboutSection { padding: 60px 20px; }
+  .CatalogSection { padding: 40px 20px 60px; }
+  .Footer { padding: 60px 20px; }
+}
+
+/* =====================
+   CATALOG PREVIEW SKELETON
+   ===================== */
+.CatalogPreviewSkeleton {
+  pointer-events: none;
+  cursor: default;
+}
+
+@keyframes previewShimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.CatalogSkeletonImg {
+  width: 100%;
+  min-height: 200px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #2a2a2a 25%, #333 50%, #2a2a2a 75%);
+  background-size: 200% 200%;
+  animation: previewShimmer 1.8s infinite linear;
+}
+.CatalogPreviewCard:first-child .CatalogSkeletonImg {
+  min-height: 420px;
+}
+
+.CatalogSkeletonLine {
+  height: 12px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+  background-size: 200% 200%;
+  animation: previewShimmer 1.8s infinite linear;
+}

@@ -1,0 +1,281 @@
+/* ═══════════════════════════════════════════════════
+   users-admin.css
+   Стилі сторінки адмін-управління користувачами
+   ═══════════════════════════════════════════════════ */
+
+/* ── Заголовок ── */
+.AdminTitle {
+    padding: 60px 40px 0 40px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.AdminHeading {
+    font-family: 'Crimson Text', serif;
+    font-size: 96px;
+    font-weight: normal;
+    letter-spacing: 0.08em;
+    color: #000;
+    margin: 0;
+    line-height: 1;
+}
+
+.AdminRoleBadge {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: rgba(145,145,145,1);
+    border: 1px solid rgba(0,0,0,0.2);
+    padding: 6px 14px;
+    margin-bottom: 14px;
+}
+
+/* ── Статистика ── */
+.AdminStats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    margin: 30px 0 0 0;
+}
+
+.AdminStat {
+    padding: 28px 40px;
+    border-right: 1px solid rgba(0,0,0,0.1);
+}
+.AdminStat:last-child { border-right: none; }
+
+.AdminStatLabel {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: rgba(145,145,145,1);
+    margin-bottom: 8px;
+}
+
+.AdminStatVal {
+    font-family: 'Crimson Text', serif;
+    font-size: 48px;
+    font-weight: normal;
+    color: #000;
+    line-height: 1;
+}
+
+/* ── Тулбар ── */
+.AdminToolbar {
+    display: flex;
+    align-items: center;
+    padding: 24px 40px 0 40px;
+    border-bottom: 1px solid rgba(0,0,0,0.12);
+}
+
+.AdminSearch {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    color: #000;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+    padding: 6px 0;
+    width: 280px;
+    outline: none;
+    margin-bottom: 12px;
+    transition: border-color 0.3s;
+}
+.AdminSearch:focus { border-color: #000; }
+.AdminSearch::placeholder { color: rgba(145,145,145,0.8); }
+
+/* ── Шапка таблиці ── */
+.AdminTableHeader {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr 120px 140px;
+    gap: 16px;
+    padding: 12px 40px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: rgba(145,145,145,1);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+/* ── Список ── */
+.AdminList { padding: 0 40px 60px 40px; }
+
+.AdminUserRow {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr 120px 140px;
+    gap: 16px;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+    transition: opacity 0.2s;
+}
+.AdminUserRow:hover { opacity: 0.65; }
+
+.AdminUserId {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+}
+
+.AdminUserName {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    color: #000;
+}
+
+.AdminUserEmail {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    color: rgba(145,145,145,1);
+}
+
+.AdminUserDate {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+    color: rgba(145,145,145,1);
+}
+
+.AdminRolePill {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    padding: 5px 12px;
+    border: 1px solid;
+    display: inline-block;
+}
+.AdminRolePill.admin {
+    border-color: rgba(180,130,20,1);
+    color: rgba(180,130,20,1);
+    background: rgba(230,181,81,0.08);
+}
+.AdminRolePill.user {
+    border-color: rgba(0,0,0,0.2);
+    color: rgba(100,100,100,1);
+    background: transparent;
+}
+
+.UsersEmpty {
+    padding: 60px 0;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 13px;
+    color: rgba(145,145,145,1);
+}
+
+/* ── Комірка ролі + кнопка видалення ── */
+.AdminUserRoleCell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.AdminDeleteBtn {
+    background: none;
+    border: 1px solid rgba(200, 60, 60, 0.3);
+    color: rgba(200, 60, 60, 0.6);
+    font-size: 11px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+    padding: 0;
+    line-height: 1;
+}
+.AdminDeleteBtn:hover {
+    background: rgba(200, 60, 60, 0.08);
+    border-color: rgba(200, 60, 60, 0.8);
+    color: rgba(200, 60, 60, 1);
+}
+
+/* =====================
+   RESET & BASE
+   ===================== */
+* { box-sizing: border-box; }
+body { font-size: 14px; margin: 0; padding: 0; }
+
+.Main {
+  width: 100%; min-height: 100vh;
+  background: #fff; position: relative; overflow-x: hidden;
+}
+
+/* =====================
+   HEADER
+   ===================== */
+.Header {
+  width: 100%; min-height: 70px; position: relative;
+  padding: 40px 40px 20px 40px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.HeaderMenu { display: flex; gap: 30px; align-items: center; }
+.Text1 {
+  color: #000; font-family: 'Crimson Text', serif;
+  font-size: 54px; line-height: 1; text-decoration: none;
+}
+.HomeButton, .CatalogButton, .OrdersButton {
+  color: #000; font-family: 'Crimson Text', serif; font-size: 28px;
+  text-decoration: none; transition: opacity 0.3s;
+}
+.HomeButton:hover, .CatalogButton:hover, .OrdersButton:hover { opacity: 0.6; }
+.HomeButton.active, .CatalogButton.active, .OrdersButton.active {
+  border-bottom: 2px solid #000; padding-bottom: 2px;
+}
+.Icons { display: flex; gap: 15px; align-items: center; }
+.bg1, .bg2 {
+  width: 32px; height: 32px; background: #fff; border-radius: 50%;
+  display: flex; justify-content: center; align-items: center; transition: background 0.3s;
+}
+.bg1:hover, .bg2:hover { background: #f0f0f0; }
+.CartButton, .ProfileButton {
+  width: 21px; height: 21px; display: block;
+  background-repeat: no-repeat; background-position: center; background-size: contain;
+  transition: transform 0.2s;
+}
+.CartButton:hover, .ProfileButton:hover { transform: scale(1.1); }
+.CartButton    { background-image: url("../images/gui/cart.png"); }
+.ProfileButton { background-image: url("../images/gui/profile.png"); }
+
+/* =====================
+   FOOTER
+   ===================== */
+.Footer { width: 100%; min-height: 600px; position: relative; }
+.F_container {
+  width: 100%; min-height: 600px;
+  background: rgba(230,181,81,1); padding: 80px 60px;
+  display: flex; flex-direction: column; gap: 50px;
+}
+.F_socials { width: 100%; display: flex; justify-content: space-between; align-items: flex-start; }
+.F_holder { display: flex; flex-direction: column; gap: 40px; }
+.F_Columns { display: flex; gap: 60px; }
+.F_Column { display: flex; flex-direction: column; gap: 15px; min-width: 150px; }
+.F_Column a, .Sup_link {
+  color: #000; font-family: 'Roboto Mono', monospace;
+  text-decoration: none; font-size: 20px; transition: opacity 0.3s;
+}
+.F_Column a:hover { opacity: 0.6; }
+.F_link-about, .F_link-community, .F_link-socials {
+  font-size: 26px !important; font-weight: bold; margin-bottom: 10px;
+}
+.Support { width: 330px; display: flex; flex-direction: column; gap: 20px; }
+.Sup_text { font-family: 'Roboto Mono', monospace; font-size: 40px; font-weight: bold; }
+.Sup_link {
+  display: flex; align-items: center;
+  border-bottom: 1px solid #000; padding-bottom: 5px;
+}
+.Ssup_text { font-size: 24px; font-family: 'Roboto Mono', monospace; }
+.pointer-arrow {
+  width: 19px; height: 12px;
+  background: url(../images/gui/Vector-right.png) no-repeat center;
+  background-size: contain; margin-left: auto;
+}
+.Logo {
+  width: 250px; height: 250px;
+  background: url("../images/logo-white.png") no-repeat center;
+  background-size: contain; opacity: 0.8; margin-top: 20px;
+}

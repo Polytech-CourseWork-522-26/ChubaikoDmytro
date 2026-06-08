@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet" />
+    <link href="../overlays/overlay-style.css" rel="stylesheet" />
+    <link href="users-admin.css" rel="stylesheet" />
+    <title>CE — Адмін · Користувачі</title>
+</head>
+<body>
+<div class="Main">
+
+        <!-- HEADER -->
+    <header class="Header">
+        <a class="Text1" href="../main/index.html">CE</a>
+        <nav class="HeaderMenu">
+            <a class="HomeButton" href="../main/index.html">Дім</a>
+            <a class="CatalogButton" href="../catalog/catalog.html">Каталог</a>
+            <a class="OrdersButton" href="../order/order.html">Замовлення</a>
+        </nav>
+        <div class="Icons">
+            <div class="bg1" id="profileBtn"><a class="ProfileButton"></a></div>
+            <div class="bg2" id="cartBtn"><a class="CartButton"></a></div>
+        </div>
+    </header>
+
+    <!-- PAGE TITLE -->
+    <div class="AdminTitle">
+        <h1 class="AdminHeading">КОРИСТУВАЧІ</h1>
+        <span class="AdminRoleBadge">АДМІНІСТРАТОР</span>
+    </div>
+
+    <!-- STATS -->
+    <div class="AdminStats">
+        <div class="AdminStat">
+            <div class="AdminStatLabel">ВСЬОГО</div>
+            <div class="AdminStatVal" id="statTotal">—</div>
+        </div>
+        <div class="AdminStat">
+            <div class="AdminStatLabel">КОРИСТУВАЧІВ</div>
+            <div class="AdminStatVal" id="statUsers">—</div>
+        </div>
+        <div class="AdminStat">
+            <div class="AdminStatLabel">АДМІНІСТРАТОРІВ</div>
+            <div class="AdminStatVal" id="statAdmins">—</div>
+        </div>
+    </div>
+
+    <!-- TOOLBAR -->
+    <div class="AdminToolbar">
+        <input class="AdminSearch" type="text" placeholder="Пошук по імені або email..."
+               oninput="searchUsers(this.value)">
+    </div>
+
+    <!-- TABLE HEADER -->
+    <div class="AdminTableHeader">
+        <div>ID</div>
+        <div>ІМ'Я</div>
+        <div>EMAIL</div>
+        <div>ДАТА РЕЄ.</div>
+        <div>РОЛЬ</div>
+    </div>
+
+    <!-- USERS LIST -->
+    <div class="AdminList" id="usersList">
+        <p class="UsersEmpty">Завантаження...</p>
+    </div>
+
+        <!-- FOOTER -->
+    <footer class="Footer">
+        <div class="F_container">
+            <div class="F_socials">
+                <div class="F_holder">
+                    <div class="Support">
+                        <span class="Sup_text">Підтримка</span>
+                        <a class="Sup_link" href="mailto:support@cewatch.com">
+                            <span class="Ssup_text">Email</span>
+                            <div class="pointer-arrow"></div>
+                        </a>
+                    </div>
+                    <div class="Logo"></div>
+                </div>
+                <div class="F_Columns">
+                    <nav class="F_Column">
+                        <span class="F_link-community">Спільнота</span>
+                        <a href="#">Події</a>
+                        <a href="#">Блог</a>
+                        <a href="#">Підкаст</a>
+                        <a href="#">Запросити</a>
+                    </nav>
+                    <nav class="F_Column">
+                        <span class="F_link-socials">Соціальні мережі</span>
+                        <a href="#">Discord</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Twitter</a>
+                        <a href="#">Facebook</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+<!-- ACCOUNT MODAL -->
+<div id="accountModal" class="modal-overlay" style="display:none;">
+    <div id="modalContent"></div>
+</div>
+
+<!-- JS: спочатку modal-overlays, потім modal-admin -->
+<script src="../overlays/modal-overlays.js"></script>
+<script src="scripts/modal-admin.js"></script>
+</body>
+</html>

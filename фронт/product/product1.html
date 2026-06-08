@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Text&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet" />
+    <link href="./css/style.css" rel="stylesheet" />
+    <link href="../overlays/overlay-style.css" rel="stylesheet" />
+
+    <!-- model-viewer для 3D -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+
+    <title>Деталі товару</title>
+
+</head>
+<body>
+    <div class="Main">
+        <header class="Header">
+            <a class="Text1" href="../main/index.html">CE</a>
+            <nav class="HeaderMenu">
+                <a class="HomeButton" href="../main/index.html">Дім</a>
+                <a class="CatalogButton" href="../catalog/catalog.html">Каталог</a>
+                <a class="OrdersButton" href="../order/order.html">Замовлення</a>
+            </nav>
+            <div class="Icons">
+                <div class="bg1" id="profileBtn"><a class="ProfileButton"></a></div>
+                <div class="bg2" id="cartBtn"><a class="CartButton"></a></div>
+            </div>
+        </header>
+
+        <nav class="Map">
+            <span class="MapElement1">Дім</span>
+            <span class="MapElement2">Каталог</span>
+            <span class="MapElement3" id="breadcrumbName">Картка товару</span>
+        </nav>
+
+        <section class="Product">
+
+            <!-- ЛІВА ЧАСТИНА: мініатюри -->
+            <div class="P_gallery_side">
+                <div class="P_pic1" id="thumb_photo"
+                     style="cursor:pointer;"
+                     title="Фото товару">
+                </div>
+                <div class="P_pic3" id="thumb_3d"
+                     style="cursor:pointer;display:none;"
+                     title="3D модель">
+                    <!-- іконка 3D на мініатюрі -->
+                    <div style="display:flex;align-items:center;justify-content:center;
+                                height:100%;font-family:'Roboto Mono',monospace;
+                                font-size:12px;color:#888;letter-spacing:0.05em;">
+                        3D
+                    </div>
+                </div>
+            </div>
+
+            <!-- ЦЕНТР: таби + фото + model-viewer -->
+            <div style="display:flex;flex-direction:column;">
+
+                <!-- Таби (приховані поки немає обох) -->
+                <div class="P_view_tabs" id="viewTabs">
+                    <button class="P_tab_btn active" id="tabPhoto" onclick="switchTab('photo')">Фото</button>
+                    <button class="P_tab_btn"        id="tab3d"    onclick="switchTab('3d')">3D модель</button>
+                </div>
+
+                <!-- Фото -->
+                <div class="P_display" id="productImage"></div>
+
+                <!-- 3D viewer (прихований за замовчуванням) -->
+                <div class="P_model_viewer_wrap hidden-tab" id="modelViewerWrap">
+                    <model-viewer
+                        id="productModelViewer"
+                        camera-controls
+                        auto-rotate
+                        shadow-intensity="1"
+                        alt="3D модель товару"
+                        style="width:550px;height:560px;">
+                    </model-viewer>
+                </div>
+            </div>
+
+            <!-- ПРАВА ЧАСТИНА: інфо -->
+            <div class="P_info_block">
+
+                <!-- Статус -->
+                <div class="P_status in-stock" id="productStatus">В наявності</div>
+
+                <!-- Назва + ціна -->
+                <h1 class="P_text" id="productText">Завантаження...</h1>
+
+                <!-- Кнопка купити -->
+                <a class="fancy" href="#" id="buyBtn">
+                    <span class="top-key"></span>
+                    <span class="text">Купити</span>
+                    <span class="bottom-key-1"></span>
+                    <span class="bottom-key-2"></span>
+                </a>
+
+                <h2 class="P_desc_elem">Опис товару</h2>
+                <p class="P_description" id="productDesc">
+                    Будь ласка, зачекайте, характеристики завантажуються...
+                </p>
+            </div>
+        </section>
+
+        <h2 class="Text2">Рекомендації</h2>
+        <section class="prop_fold" id="recommendations">
+            <!-- заповнюється JS -->
+        </section>
+
+        <footer class="Footer">
+        <div class="F_container">
+            <div class="F_socials">
+                <div class="F_holder">
+                    <div class="Support">
+                        <span class="Sup_text">Підтримка</span>
+                        <a class="Sup_link" href="mailto:support@cewatch.com">
+                            <span class="Ssup_text">Email</span>
+                            <div class="pointer-arrow"></div>
+                        </a>
+                    </div>
+                    <div class="Logo"></div>
+                </div>
+                <div class="F_Columns">
+                    <nav class="F_Column">
+                        <span class="F_link-community">Спільнота</span>
+                        <a href="#">Події</a>
+                        <a href="#">Блог</a>
+                        <a href="#">Підкаст</a>
+                        <a href="#">Запросити</a>
+                    </nav>
+                    <nav class="F_Column">
+                        <span class="F_link-socials">Соціальні мережі</span>
+                        <a href="#">Discord</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Twitter</a>
+                        <a href="#">Facebook</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </div>
+
+    <div id="accountModal" class="modal-overlay" style="display: none;">
+        <div id="modalContent"></div>
+    </div>
+
+    <script src="../overlays/modal-overlays.js"></script>
+    <script src="../order/scripts/modal-order.js"></script>
+    <script src="scripts/modal.js"></script>
+</body>
+</body>
+</html>
